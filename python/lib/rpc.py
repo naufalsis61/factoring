@@ -64,7 +64,7 @@ def rpc_getblock( Hash ):
 def block_who( height ):
     bhash = rpc_getblockhash(height)
     block = rpc_getblock(bhash)
-    wallet = block['tx'][0]['vout'][0]['scriptPubKey']['address']
+    wallet = block['tx'][0]['vout'][0]['scriptPubKey']['address'] if "wallet" in block['tx'][0]['vout'][0]['scriptPubKey'] else "NoWallet"
     mtime = block['mediantime']
 
     return mtime
